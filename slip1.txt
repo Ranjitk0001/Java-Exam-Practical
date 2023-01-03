@@ -1,0 +1,95 @@
+//Slip1
+
+
+public class Prime_no {
+      static  boolean IsPrime(int n)             
+        {
+            boolean Flag = true;
+            if(n<=1)
+                return false;
+            else
+                for(int i=2; i<n; i++)        
+                {
+                    if(n%i == 0)
+                    {
+                        Flag = false;
+                        break;
+                    }
+                }
+                return Flag;
+
+        }
+    public static void main(String[] args) {
+
+         int n = Integer.parseInt(args[0]);
+                                                 
+        if(IsPrime(n))                          
+       {
+            System.out.println(n+ " is a Prime numebr..");
+        }
+        else
+            System.out.println(n+ " is not a prime numebr!!");
+    }
+}
+
+
+Q2.
+Define an abstract class Staff with protected members id and name. Define a parameterized constructor. Define one subclass OfficeStaff with member department. Create n objects ofOfficeStaff and display all details.
+
+/*
+ Define an abstract class Staff with protected members id and name.
+Define a parameterized constructor. Define one subclass OfficeStaff
+with member department. Create n objects of OfficeStaff and display all
+details
+ */
+
+import java.util.Scanner;
+
+abstract class Staff
+{
+    protected  int id;
+    protected  String name;
+     Staff(int id, String name)
+     {
+         this.id = id;
+         this.name = name;
+     }
+     abstract void display();
+}
+
+public class Abstract_Staff extends Staff                   // class OfficeStaff
+{
+    String dep;
+
+    Abstract_Staff(int id, String name, String dep) {
+        super(id, name);
+        this.dep = dep;
+    }
+    void display()
+    {
+        System.out.println("\n id :"+id+" \tName :"+name+" \tDepartment :"+dep);
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the how many object u want to created:");
+        int n = sc.nextInt();
+
+        Abstract_Staff obj[] = new Abstract_Staff[n];
+
+        System.out.println("Enter the Office staff detail:");
+        for(int i=0; i<n; i++)
+        {
+            System.out.println("Enter the id of Employee :"+(i+1));
+            int id = sc.nextInt();
+
+            System.out.println("Enter the name of the Employee :"+(i+1));
+            String name = sc.next();
+
+            System.out.println("Enter the name of the Department of Employee:"+(i+1));
+            String dep = sc.next();
+
+            obj[i] = new Abstract_Staff(id, name, dep);
+
+        }

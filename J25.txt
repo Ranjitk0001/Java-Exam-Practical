@@ -1,0 +1,118 @@
+// Slip 25
+
+//Q1
+import java.io.* ; 
+class S25Q1{ 
+    public static void main(String args[])throws Exception{
+        InputStreamReader r=new InputStreamReader(System.in); 
+        BufferedReader br=new BufferedReader(r); 
+        System.out.print("Enter name: "); 
+        String name = br.readLine(); 
+        System.out.print("Enter roll no: "); 
+        String number=br.readLine(); 
+        System.out.print("Enter percentage: "); 
+        String marks=br.readLine(); 
+ 
+        System.out.print("Enter class: "); 
+        String classname=br.readLine(); 
+ 
+        System.out.println("name:"+name); 
+        System.out.println("Roll No.:"+number); 
+        System.out.println("Marks:"+marks); 
+ 
+        System.out.println("Class:"+classname); 
+    } 
+} 
+
+
+//Q2
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+class S25Q2 extends JFrame implements ItemListener ,ActionListener
+	{
+    JLabel l1,l2,l3;
+    JTextField t1,t2;
+ 	JCheckBox cb1,cb2,cb3;
+  	ButtonGroup bg;
+  	String a;
+ 	JRadioButton rb1,rb2,rb3;
+ 	S25Q2()
+    {
+		setSize(500,350);
+        setLayout(null);
+        setTitle("GUI for students");
+        setLocation(180,180);
+
+       	l1=new JLabel("Your Name");
+       	l2=new JLabel("Your class");
+        l3=new JLabel("Your hobbies");
+        t1=new JTextField();
+        t2=new JTextField();
+      	rb1=new JRadioButton("FY");
+      	rb2=new JRadioButton("SY");
+       	rb3=new JRadioButton("TY");
+		cb1=new JCheckBox("Music");
+		cb2=new JCheckBox("Dance");
+		cb3=new JCheckBox("Sports");
+        bg=new ButtonGroup();
+
+		add(l1);
+    	add(l2);
+     	add(l3);
+
+     	add(t1);add(t2);
+    	bg.add(rb1);bg.add(rb2);bg.add(rb3);
+     	add(rb1);  add(rb2);  add(rb3);
+       	add(cb1);  add(cb2);  add(cb3);
+		rb1.addActionListener(this);
+	    rb2.addActionListener(this);
+	    rb3.addActionListener(this);
+	    cb1.addItemListener(this);
+	    cb2.addItemListener(this);
+    	cb3.addItemListener(this);
+
+	    l1.setBounds(30,20,100,20);
+    	t1.setBounds(130,20,200,20);
+	    l2.setBounds(30,50,100,20);
+	    
+    	rb1.setBounds(30,80,50,20);
+	    rb2.setBounds(30,110,50,20);
+		rb3.setBounds(30,140,50,20);
+	    l3.setBounds(130,50,100,20);
+  		cb1.setBounds(130,80,100,20);
+		cb2.setBounds(130,110,100,20);
+	    cb3.setBounds(130,140,100,20);
+    	t2.setBounds(30,220,400,40);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+	public void actionPerformed (ActionEvent e)
+   	{
+   		a="Name="+t1.getText()+" Class="+e.getActionCommand();
+		t2.setText(a);
+		cb1.setSelected(false);
+		cb2.setSelected(false);
+		cb3.setSelected(false);
+   	}
+	public void itemStateChanged(ItemEvent e)
+	{
+		if(cb1.isSelected()||cb2.isSelected()||cb3.isSelected())
+    	{
+			String msg=a+" and Hobbies=";
+      		if(cb1.isSelected())
+     		msg=msg+" "+cb1.getText();
+     		if(cb2.isSelected())
+     		msg=msg+" "+cb2.getText();
+		    if(cb3.isSelected())
+		    msg=msg+" "+cb3.getText();
+			t2.setText(msg);
+     	}
+     	else
+		    t2.setText(a);
+   }
+	public static void main(String args[])
+    {
+	new S25Q2();
+ 	}
+ } 

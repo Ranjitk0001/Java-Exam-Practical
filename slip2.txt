@@ -1,0 +1,70 @@
+//slip2
+
+Q1
+import java.util.Scanner;
+
+public class PersonDetail {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter the First Name & Last Name of Person:");
+        String fname = sc.next();
+        String lname = sc.next();
+
+        float weight = Float.parseFloat(args[0]);
+        float height = Float.parseFloat(args[1]);
+
+        double BMI = weight / Math.pow(height,2);         // float BMI = float(weight / Math.pow(height,2));
+
+        System.out.println("The BMI of person :"+fname+" "+lname+" is :"+BMI);
+    }
+}
+
+Q2
+import java.util.Scanner;
+
+public class CricketPlayer {
+    String name;
+    int no_of_innings, no_of_times_notout, totalruns;
+    float bat_avg;
+
+    CricketPlayer(String name, int no_of_innings, int no_of_times_notout, int totalruns) {
+        this.name = name;
+        this.no_of_innings = no_of_innings;
+        this.no_of_times_notout = no_of_times_notout;
+        this.totalruns = totalruns;
+    }
+
+    static void average(CricketPlayer player[],int n)
+    {
+        try
+        {
+             for(int i=0; i<n; i++)
+             {
+                 player[i].bat_avg = player[i].totalruns/player[i].no_of_innings;
+             }
+       }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+     }
+
+     static void sort(CricketPlayer player[], int n)
+     {
+         for(int i=0; i<n; i++)
+         {
+             for(int j=i+1;j<n; j++)
+             {
+                 if(player[i].bat_avg > player[j].bat_avg)
+                 {
+                     CricketPlayer temp = player[i];
+                     player[i] = player[j];
+                     player[j] = temp;
+                 }
+
+             }
+         }
+
+     }

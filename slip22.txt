@@ -1,0 +1,118 @@
+//slip22
+
+Q1
+Write a program to create an abstract class named Shape that contains two integers and an empty method named printArea(). Provide three classes named Rectangle, Triangle and Circle such that each one of the classes extends the class Shape. Each one of the classes contain only the method printArea() that prints the area of the given shape. (use method overriding).
+
+
+
+
+
+
+abstract class shape
+{
+    int a=5,b=8;
+    abstract public void printArea();
+}
+
+class rectangle extends shape
+{
+    public int area_rectangle;
+    public void printArea()
+    {
+        area_rectangle = a*b;
+        System.out.println("The area of rectangle is:"+area_rectangle);
+    }
+}
+
+class triangle extends shape
+{
+    int area_triangle;
+
+    public void printArea()
+    {
+        area_triangle = (int) (0.5*a*b);
+        System.out.println("The area of triangle is:"+area_triangle);
+    }
+}
+
+class circle extends shape
+{
+    int area_circle;
+    public void printArea()
+    {
+        area_circle=(int) (3.14*a*a);
+        System.out.println("The area of circle is:"+area_circle);
+    }
+}
+
+public class Abstract_Shape {
+
+    public static void main(String[] args) {
+
+        rectangle r = new rectangle();
+        r.printArea();
+        triangle t = new triangle();
+        t.printArea();
+        circle r1 = new circle();
+        r1.printArea();
+    }
+}
+
+Q2
+/*10.WRITE A JAVA PROGRAM THAT HANDLES ALL MOUSE EVENTS AND SHOWS THE EVENT
+NAME AT THE CENTER OF THE WINDOW WHEN A MOUSE EVENT IS FIRED.(USE ADAPTER
+CLASSES).*/
+
+import javax.swing.*;
+import java.awt.*;
+import javax.swing.event.*;
+import java.awt.event.*;
+
+ class MouseEvent extends JFrame implements MouseListener
+{
+    JLabel l1;
+    public MouseEvent()
+    {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400,400);
+        setLayout(new FlowLayout());
+        l1=new JLabel();
+        Font f=new Font("Verdana",Font.BOLD,20);
+        l1.setFont(f);
+        l1.setForeground(Color.BLUE);
+        l1.setAlignmentX(Component.CENTER_ALIGNMENT);
+        l1.setAlignmentY(Component.CENTER_ALIGNMENT);
+        add(l1);
+        addMouseListener(this);
+        setVisible(true);
+    }
+    public void mouseExited(MouseEvent m)
+
+    {
+        l1.setText("Mouse Exited");
+    }
+    public void mouseEntered(MouseEvent m)
+    {
+        l1.setText("Mouse Entered");
+    }
+    public void mouseReleased(MouseEvent m)
+    {
+        l1.setText("Mouse Released");
+    }
+    public void mousePressed(MouseEvent m)
+    {
+        l1.setText("Mouse Pressed");
+    }
+    public void mouseClicked(MouseEvent m)
+    {
+        l1.setText("Mouse Clicked");
+    }
+}
+
+public class MouseEvents
+{
+    public static void main(String[] args)
+    {
+        MouseEvent a=new MouseEvent();
+    }
+}

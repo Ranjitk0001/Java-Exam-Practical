@@ -1,0 +1,101 @@
+//slip10
+
+Q1
+/*
+Write a program to find the cube of given number using functional interface
+my note: functional interface means only single abstract class.
+ */
+
+import java.util.Scanner;
+
+interface Cube
+        {
+            void  funcCube(int num);
+        }
+class Concrete implements Cube
+{
+    public void funcCube(int num)
+    {
+        System.out.println("The cube of "+num+" is: "+Math.pow(num,3));
+    }
+}
+
+
+public class Functional_Interface {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number:");
+        int num = sc.nextInt();
+        Concrete obj = new Concrete();
+        obj.funcCube(num);
+    }
+}
+
+Q2
+Write a program to create a package name student. Define class StudentInfo with method to display information about student such as rollno, class, and percentage.
+
+ Create another class StudentPer with method to find percentage of the student. Accept student details like rollno, name, class and marks of 6 subject from user.
+
+
+
+
+//package student;
+import java.util.Scanner;
+
+class StudentInfo
+{
+    int rollno;
+    String std;
+    float percentage;
+   StudentInfo(int rollno,String std)
+   {
+       this.rollno = rollno;
+       this.std = std;
+   }
+
+   void display()
+   {
+       System.out.println("Rollno :"+rollno+"\t Class :"+std);
+   }
+
+}
+
+public class mystud extends StudentInfo                           // class StudentPer
+{
+    int marks[] = new int[5];
+    float total;
+    float percentage;
+    mystud(int rollno,String std)
+    {
+        super(rollno,std);
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter the marks of 5 subject out of 100:");
+        for(int i=0;i<5;i++)
+            marks[i] = sc.nextInt();
+    }
+
+     void findPer()
+    {
+
+        for(int i=0;i<5;i++)
+            total += marks[i];
+
+        percentage = (total/500)*100;
+    }
+    void display()
+    {
+        super.display();
+        System.out.println("Percentage:"+percentage);
+    }
+
+    public static void main(String[] args) {
+
+
+        mystud stud = new mystud(50,"nihan");
+        stud.findPer();
+        stud.display();
+    }
+
+}

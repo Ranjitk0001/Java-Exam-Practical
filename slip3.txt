@@ -1,0 +1,127 @@
+
+//slip3
+Q1
+import java.util.Scanner;
+
+public class SortCity1 {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number of cities:");
+        int n = sc.nextInt();
+
+        String name[] = new String[n];
+
+        for(int i=0; i<n; i++)
+        {
+            System.out.println("Enter the name of city :"+(i+1));
+            name[i] = sc.next();
+        }
+
+        for(int i=0; i<n; i++)
+        {
+            for(int j=i+1; j<n; j++)
+            {
+                if((name[i].compareTo(name[j])) > 0)
+                {
+                    String temp;
+                    temp = name[i];
+                    name[i] = name[j];
+                    name[j] = temp;
+                }
+            }
+        }
+
+        System.out.println("After Sorting cities in Ascending order:");
+        for(int i=0; i<n; i++)
+        {
+            System.out.println(name[i]);
+        }
+    }
+}
+
+Q2
+import java.io.*;
+import java.util.Scanner;
+
+    class LessOxygenException extends Exception
+    {
+        public String toString()
+        {
+            return "Patient is covid Positive";
+        }
+    }
+
+    class MoreHRCTException extends Exception
+    {
+        public String toString()
+        {
+            return "Need to hospitalize";
+        }
+    }
+
+ class Patient
+ {
+     String pname;
+     int page,olevel,hrct;
+
+     void accept() throws LessOxygenException, MoreHRCTException
+     {
+
+                Scanner s = new Scanner(System.in);
+
+                System.out.println("Enter the name of Patient :");
+                pname = s.next();
+
+                System.out.println("Enter the age of Patient :");
+                page = s.nextInt();
+
+                System.out.println("Enter the Oxygen level :");
+                olevel = s.nextInt();
+                if (olevel<95)
+                {
+                    throw new LessOxygenException();
+                }
+
+                System.out.println("Enter the HRCT level :");
+                hrct = s.nextInt();
+                if (hrct>10)
+                {
+                    throw new MoreHRCTException();
+                }
+
+
+
+        }
+        void display()
+        {
+            System.out.println("\nPatient infromation:");
+            System.out.println("Patient Name:" + pname);
+            System.out.println("Patient Age:" + page);
+            System.out.println("Patient Oxygen Level:" + olevel);
+            System.out.println("Patient HRCT:" + hrct);
+        }
+    }
+public class Ass4_SetA_a
+ {
+   public static void main(String[] args)
+       {
+            Patient p = new Patient();
+         try{
+             p.accept();
+             p.display();
+            }
+
+         catch (LessOxygenException ol)
+           {
+
+               System.out.println(ol);
+           }
+         catch (MoreHRCTException hl)
+           {
+               System.out.println(hl);
+           }
+
+       }
+ }

@@ -1,0 +1,195 @@
+//slip5
+
+Q1
+/*
+ Write a program for multilevel inheritance such that country is inherited from continent.
+ State is inherited from country. Display the place, state, country and continent.
+*/
+
+import java.util.Scanner;
+
+class Contient
+ {
+    String continent;
+    Scanner sc = new Scanner(System.in);
+    public void coninput()
+    {
+        System.out.println("Enter the Continent: ");
+        continent =sc.next();
+    }
+}
+
+class Country extends Contient
+{
+    String country;
+    public void couinput()
+    {
+        System.out.println("Enter the Country: ");
+        country = sc.next();
+    }
+}
+
+class State extends Country
+{
+    String state;
+    public void stateinput()
+    {
+        System.out.println("Enter the State: ");
+        state = sc.next();
+    }
+}
+
+class Multilevel_Inheritance extends State
+{
+    String area;
+
+    public void AreaInput()
+    {
+        System.out.println("Enter the Area: ");
+        area = sc.next();
+    }
+}
+
+ public class Ass3_SetA_a
+   {
+     public static void main(String[] args)
+       {
+         Multilevel_Inheritance obj = new Multilevel_Inheritance();
+         obj.coninput();
+         obj.couinput();
+         obj.stateinput();
+         obj.AreaInput();
+
+         System.out.println("Continent : "+obj.continent);
+         System.out.println("Country   : "+obj.country);
+         System.out.println("State     : "+obj.state);
+         System.out.println("Area      : "+obj.area);
+
+    }
+}
+
+Q2
+Write a menu driven program to perform the following operations on multidimensional array ie matrices : 
+
+Addition 
+
+Multiplication
+
+ Exit
+
+
+
+import java.util.Scanner;
+
+class Ass1_SetB_c
+{
+    public static void main(String arr[])
+    {
+        int a,b,n,ch;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("How many number of rows in matrix:");
+        a = sc.nextInt();
+
+        System.out.println("How many number of columns in matrix:");
+        b = sc.nextInt();
+
+        int m1[][] = new int[a][b];
+        int m2[][] = new int[a][b];
+        System.out.println("Enter the 1st matrix:");
+        for(int i=0; i<m1.length; i++)
+          {
+            for(int j=0; j<m1.length; j++)
+            {
+                m1[i][j] = sc.nextInt();
+            }
+          }
+
+        System.out.println("1st matrix is:");
+        for(int i=0; i<m1.length; i++)
+          {
+            for(int j=0; j<m1.length; j++)
+            {
+                System.out.print(m1[i][j]+" ");
+            }
+            System.out.println();
+          }
+
+        System.out.println("Enter the 2st matrix:");
+        for(int i=0; i<m2.length; i++)
+          {
+            for(int j=0; j<m2.length; j++)
+            {
+                m2[i][j] = sc.nextInt();
+            }
+          }
+
+        System.out.println("2st matrix is:");
+        for(int i=0; i<m2.length; i++)
+          {
+            for(int j=0; j<m2.length; j++)
+            {
+                System.out.print(m2[i][j]+" ");
+            }
+            System.out.println();
+           }
+
+        do
+        {
+            System.out.println("1.Addition:");
+            System.out.println("2.Multiplication:");
+           
+            System.out.println("3.Exit:");
+
+            System.out.println("Plz Enter ur choice:");
+            ch = sc.nextInt();
+
+            switch(ch)
+            {
+                case 1:
+                    int sum[][] = new int[a][b];
+                    for(int i=0; i<m2.length; i++)
+                      {
+                        for(int j=0; j<m2.length; j++)
+                        {
+                            sum[i][j] = m1[i][j] + m2[i][j];
+                        }
+
+                      }
+
+                    System.out.println("Addition of m1 and m2:");
+                    for(int i=0; i<m2.length; i++)
+                      {
+                        for(int j=0; j<m2.length; j++)
+                        {
+                            System.out.print(sum[i][j]+" ");
+                        }
+                        System.out.println();
+                      }
+                    break;
+                case 2:
+                    int mul[][] = new int[a][b];
+                    for(int i=0; i<m2.length; i++)
+                      {
+                        for(int j=0; j<m2.length; j++)
+                        {
+                            mul[i][j] = m1[i][j] * m2[i][j];
+                        }
+
+                      }
+
+                    System.out.println("Multiplication of m1 and m2:");
+                    for(int i=0; i<m2.length; i++)
+                      {
+                        for(int j=0; j<m2.length; j++)
+                        {
+                            System.out.print(mul[i][j]+" ");
+                        }
+                        System.out.println();
+                      }
+                    break;
+               
+            }
+
+        }while(ch!=3);
+    }
+}
